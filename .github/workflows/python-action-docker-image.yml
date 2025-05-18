@@ -1,0 +1,22 @@
+name: 4. python-action-docker-image
+
+on:
+  workflow_dispatch: # Allows manual trigger via GitHub UI
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest     # Note, 
+
+    steps:
+      # Step 1: Clone the repository into the runner
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Build the Docker image using the Dockerfile in the root directory
+      - name: Build Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          tags: your-image-name:latest
+          push: false
