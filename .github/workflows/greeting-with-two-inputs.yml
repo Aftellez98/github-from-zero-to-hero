@@ -1,0 +1,23 @@
+name: 3. greet-two-people
+
+on:
+  workflow_dispatch:
+    inputs:
+      name1:
+        description: 'First person to greet'
+        required: true
+        default: 'Alice'
+      name2:
+        description: 'Second person to greet'
+        required: true
+        default: 'Bob'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say Hello to Both
+        run: |
+          echo "Hello ${{ github.event.inputs.name1 }}"
+          echo "Hello ${{ github.event.inputs.name2 }}"
